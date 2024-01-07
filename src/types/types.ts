@@ -51,3 +51,8 @@ export interface IUserProfile {
 export interface IErrorMessageList {
   [key: number]: string;
 }
+
+export interface ISendEmailProps {
+  userEmail: string;
+  token: string;
+}

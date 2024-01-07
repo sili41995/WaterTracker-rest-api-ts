@@ -1,8 +1,8 @@
-import { IAuthRequest } from '../../types/types';
+import { IAuthRequest, IUser } from '../../types/types';
 import { User } from '../../models/user';
 import jwt from 'jsonwebtoken';
 import { NextFunction, Response } from 'express';
-import { ctrlWrapper, httpError } from '../../utils';
+import { ctrlWrapper, httpError, sendEmail } from '../../utils';
 
 const { SECRET_KEY } = process.env;
 
@@ -22,14 +22,14 @@ const restorePassword = async (
     expiresIn: '1h',
   });
 
-  const result = await User.findOneAndUpdate(
+  const result = (await User.findOneAndUpdate(
     { email },
     { restorePasswordToken }
-  );
+  )) as IUser;
 
   sendEmail({
     userEmail: result.email,
-    token: result.restorePasswordToken,
+    token: result.restorePasswordToken as string,
   });
 
   res.status(200).json({ message: 'Password recovery email sent' });
