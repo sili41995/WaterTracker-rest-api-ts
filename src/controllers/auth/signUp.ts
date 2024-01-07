@@ -28,4 +28,4 @@ const signUp = async (
   });
 };
 
-module.exports = ctrlWrapper(signUp);
+export default ctrlWrapper<Request>(signUp);
