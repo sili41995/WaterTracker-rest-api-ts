@@ -1,4 +1,5 @@
 import { Request } from 'express';
+import { ObjectId } from 'mongoose';
 
 export interface IHttpError {
   status: number;
@@ -10,18 +11,19 @@ export type Gender = 'girl' | 'man';
 export type MulterFile = Express.Multer.File;
 
 export interface IUser {
+  _id: ObjectId;
   email: string;
-  password: string;
+  password: string | undefined;
   token: string | null | undefined;
   avatar?: string;
   gender: Gender;
   name: string;
   dailyWaterRequirement: number;
-  restorePasswordToken: string | null;
+  restorePasswordToken: string | null | undefined;
 }
 
 export interface IRequest extends Request {
-  user?: IUser;
+  user: IUser;
   file?: MulterFile;
 }
 
