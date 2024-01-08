@@ -1,6 +1,6 @@
 import { NextFunction, Response } from 'express';
 import { IAuthRequest } from '../../types/types';
-import { ctrlWrapper } from 'utils';
+import { ctrlWrapper } from '../../utils';
 
 const current = async (
   req: IAuthRequest,
