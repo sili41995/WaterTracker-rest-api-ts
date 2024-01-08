@@ -11,6 +11,7 @@ export type Gender = 'girl' | 'man';
 export type MulterFile = Express.Multer.File;
 
 export interface IUser {
+  [key: string]: ObjectId | string | number | null | undefined;
   _id: ObjectId;
   email: string;
   password: string | undefined;
@@ -57,4 +58,27 @@ export interface IErrorMessageList {
 export interface ISendEmailProps {
   userEmail: string;
   token: string;
+}
+
+export interface IUpdateImageProps {
+  path: string;
+  filename: string;
+}
+
+export interface IUpdateUserData extends Partial<IUser> {
+  passwordOutdated?: string;
+}
+export interface IFilteredData {
+  unset: { [key: string]: number };
+  set: IUpdateUserData;
+}
+
+export interface IUnsetData {
+  [key: string]: number;
+}
+
+export interface IUpdatePasswordProps {
+  currentPassword: string;
+  password: string;
+  passwordOutdated: string | undefined;
 }
