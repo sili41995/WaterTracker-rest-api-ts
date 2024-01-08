@@ -1,17 +1,20 @@
 import { IAuthRequest, IUser } from '../../types/types';
 import { User } from '../../models/user';
 import { ctrlWrapper } from '../../utils';
-import { NextFunction, Response } from 'express';
+import { Response, NextFunction } from 'express';
 
-const signOut = async (
+const updateWater = async (
   req: IAuthRequest,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   const { _id: id } = req.user as IUser;
-  await User.findByIdAndUpdate(id, { token: null });
 
-  res.status(204).json();
+  const result = await User.findByIdAndUpdate(id, req.body).select(
+    'dailyWaterRequirement'
+  );
+
+  res.status(200).json(result);
 };
 
-export default ctrlWrapper<IAuthRequest>(signOut);
+export default ctrlWrapper<IAuthRequest>(updateWater);

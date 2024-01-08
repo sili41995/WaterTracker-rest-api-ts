@@ -1,4 +1,4 @@
-import { IAuthRequest } from '../../types/types';
+import { IAuthRequest, IUser } from '../../types/types';
 import { User } from '../../models/user';
 import {
   ctrlWrapper,
@@ -12,7 +12,7 @@ const updateProfile = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { _id: id, password: currentPassword } = req.user;
+  const { _id: id, password: currentPassword } = req.user as IUser;
 
   const { set, unset } = filterFieldsToUpdate(req.body);
 

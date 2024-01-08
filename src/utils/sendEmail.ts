@@ -1,5 +1,5 @@
 import ElasticEmail from '@elasticemail/elasticemail-client';
-import { ISendEmailProps } from 'types/types';
+import { ISendEmailProps } from '../types/types';
 const { ELASTIC_EMAIL_EMAIL_FROM, ELASTIC_EMAIL_API_KEY, FRONTEND_BASE_URL } =
   process.env;
 

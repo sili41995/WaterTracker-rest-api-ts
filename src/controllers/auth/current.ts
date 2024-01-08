@@ -7,7 +7,9 @@ const current = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  req.user.token = undefined;
+  if (req.user) {
+    req.user.token = undefined;
+  }
 
   res.status(200).json(req.user);
 };

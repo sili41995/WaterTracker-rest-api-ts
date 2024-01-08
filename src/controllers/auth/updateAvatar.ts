@@ -18,7 +18,7 @@ const updateAvatar = async (
   }
 
   const { path } = req.file;
-  const { avatar, _id: id } = req.user;
+  const { avatar, _id: id } = req.user as IUser;
   const filename = getImageFilename(avatar);
   const { url: avatarURL } = await updateImage({
     path,

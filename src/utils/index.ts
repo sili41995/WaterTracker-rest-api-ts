@@ -6,3 +6,4 @@ export { default as updateImage } from './updateImage';
 export { default as getImageFilename } from './getImageFilename';
 export { default as filterFieldsToUpdate } from './filterFieldsToUpdate';
 export { default as getHashPassword } from './getHashPassword';
+export { default as getWaterIntakeTime } from './getWaterIntakeTime';

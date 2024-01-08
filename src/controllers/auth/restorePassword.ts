@@ -1,4 +1,4 @@
-import { IAuthRequest, IUser } from '../../types/types';
+import { IRequest, IUser } from '../../types/types';
 import { User } from '../../models/user';
 import jwt from 'jsonwebtoken';
 import { NextFunction, Response } from 'express';
@@ -7,7 +7,7 @@ import { ctrlWrapper, httpError, sendEmail } from '../../utils';
 const { SECRET_KEY } = process.env;
 
 const restorePassword = async (
-  req: IAuthRequest,
+  req: IRequest,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
@@ -35,4 +35,4 @@ const restorePassword = async (
   res.status(200).json({ message: 'Password recovery email sent' });
 };
 
-export default ctrlWrapper<IAuthRequest>(restorePassword);
+export default ctrlWrapper<IRequest>(restorePassword);
