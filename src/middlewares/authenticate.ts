@@ -1,7 +1,7 @@
+import { Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { User } from '../models/user';
 import { httpError, ctrlWrapper } from '../utils';
-import { Response, NextFunction } from 'express';
 import { IDecodedToken, IRequest } from '../types/types';
 
 const { SECRET_KEY } = process.env;

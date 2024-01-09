@@ -3,7 +3,11 @@ import logger from 'morgan';
 import cors from 'cors';
 import 'dotenv/config';
 import { IHttpError } from './types/types';
-import { aquatrackRouter, authRouter } from './routes/api';
+import {
+  aquatrackRouter,
+  authRouter,
+  hydrationEntriesRouter,
+} from './routes/api';
 
 const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
@@ -14,6 +18,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRouter);
 app.use('/api/aquatrack', aquatrackRouter);
+app.use('/api/hydration-entries', hydrationEntriesRouter);
 
 app.use((req: Request, res: Response): void => {
   res.status(404).json({ message: 'Not Found' });

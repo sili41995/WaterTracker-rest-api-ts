@@ -1,7 +1,7 @@
+import { Response, NextFunction } from 'express';
 import { IAuthRequest, IUser } from '../../types/types';
 import { User } from '../../models/user';
 import { ctrlWrapper } from '../../utils';
-import { Response, NextFunction } from 'express';
 
 const updateWater = async (
   req: IAuthRequest,

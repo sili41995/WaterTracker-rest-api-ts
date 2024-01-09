@@ -1,3 +1,4 @@
+import { NextFunction, Response } from 'express';
 import { IRequest, IUser } from '../../types/types';
 import { User } from '../../models/user';
 import {
@@ -6,7 +7,6 @@ import {
   getImageFilename,
   httpError,
 } from '../../utils';
-import { NextFunction, Response } from 'express';
 
 const updateAvatar = async (
   req: IRequest,

@@ -1,3 +1,4 @@
+import { Response, NextFunction } from 'express';
 import { ctrlWrapper, httpError } from '../../utils';
 import { HydrationEntry } from '../../models/hydrationEntry';
 import {
@@ -12,7 +13,6 @@ import {
 } from './aggregationStages';
 import { errorMessages } from '../../constants';
 import { IHydrationEntryRequest, IUser } from '../../types/types';
-import { Response, NextFunction } from 'express';
 
 const { invalidDateErr } = errorMessages;
 
@@ -58,4 +58,4 @@ const getMonthProgress = async (
   res.status(200).json(result);
 };
 
-module.exports = ctrlWrapper(getMonthProgress);
+export default ctrlWrapper<IHydrationEntryRequest>(getMonthProgress);

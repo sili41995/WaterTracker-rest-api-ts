@@ -1,6 +1,6 @@
+import { UploadApiResponse } from 'cloudinary';
 import fs from 'fs/promises';
 import cloudinary from './cloudinary';
-import { UploadApiResponse } from 'cloudinary';
 import { IUpdateImageProps } from '../types/types';
 
 const updateImage = async ({

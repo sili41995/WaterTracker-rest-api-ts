@@ -1,7 +1,7 @@
+import { NextFunction, Response } from 'express';
 import { IAuthRequest, IUser } from '../../types/types';
 import { User } from '../../models/user';
 import { ctrlWrapper } from '../../utils';
-import { NextFunction, Response } from 'express';
 
 const signOut = async (
   req: IAuthRequest,

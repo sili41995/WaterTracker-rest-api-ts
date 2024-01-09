@@ -1,3 +1,4 @@
+import { Response, NextFunction } from 'express';
 import { IHydrationEntryRequest, IUser } from '../../types/types';
 import { errorMessages } from '../../constants';
 import { HydrationEntry } from '../../models/hydrationEntry';
@@ -7,7 +8,6 @@ import {
   httpError,
   getDayProgress,
 } from '../../utils';
-import { Response, NextFunction } from 'express';
 
 const { dailyWaterRequirementAbsentErr } = errorMessages;
 

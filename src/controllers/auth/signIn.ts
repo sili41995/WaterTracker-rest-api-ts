@@ -1,9 +1,9 @@
-import { User } from '../../models/user';
+import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import { User } from '../../models/user';
 import { ctrlWrapper, httpError } from '../../utils';
-import { IAuthRequest } from 'types/types';
-import { NextFunction, Response } from 'express';
+import { IAuthRequest } from '../../types/types';
 
 const { SECRET_KEY } = process.env;
 

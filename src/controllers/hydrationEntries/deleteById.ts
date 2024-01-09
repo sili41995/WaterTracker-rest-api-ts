@@ -1,8 +1,8 @@
+import { Response, NextFunction } from 'express';
 import { IHydrationEntryRequest, IUser } from '../../types/types';
 import { findHydrationEntryFilter } from '../../constants';
 import { HydrationEntry } from '../../models/hydrationEntry';
 import { ctrlWrapper, httpError } from '../../utils';
-import { Response, NextFunction } from 'express';
 
 const deleteById = async (
   req: IHydrationEntryRequest,

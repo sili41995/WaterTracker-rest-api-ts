@@ -1,7 +1,7 @@
+import { NextFunction, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import { User } from '../../models/user';
 import { ctrlWrapper, httpError } from '../../utils';
-import { NextFunction, Request, Response } from 'express';
 
 const signUp = async (
   req: Request,

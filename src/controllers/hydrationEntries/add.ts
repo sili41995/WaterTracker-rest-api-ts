@@ -1,7 +1,7 @@
+import { Response, NextFunction } from 'express';
 import { IHydrationEntryRequest, IUser } from '../../types/types';
 import { HydrationEntry } from '../../models/hydrationEntry';
 import { ctrlWrapper, getWaterIntakeTime } from '../../utils';
-import { Response, NextFunction } from 'express';
 
 const add = async (
   req: IHydrationEntryRequest,

@@ -1,8 +1,8 @@
+import { NextFunction, Response } from 'express';
+import bcrypt from 'bcryptjs';
 import { IAuthRequest } from '../../types/types';
 import { User } from '../../models/user';
 import { httpError, ctrlWrapper } from '../../utils';
-import bcrypt from 'bcryptjs';
-import { NextFunction, Response } from 'express';
 
 const updatePassword = async (
   req: IAuthRequest,

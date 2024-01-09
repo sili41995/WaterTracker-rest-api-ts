@@ -1,3 +1,4 @@
+import { NextFunction, Response } from 'express';
 import { IAuthRequest, IUser } from '../../types/types';
 import { User } from '../../models/user';
 import {
@@ -5,7 +6,6 @@ import {
   filterFieldsToUpdate,
   getHashPassword,
 } from '../../utils';
-import { NextFunction, Response } from 'express';
 
 const updateProfile = async (
   req: IAuthRequest,
