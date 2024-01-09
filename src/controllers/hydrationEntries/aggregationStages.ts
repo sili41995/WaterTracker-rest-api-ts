@@ -1,10 +1,11 @@
-import { IGetMatchByTimeStageProps } from 'types/types';
+import { PipelineStage } from 'mongoose';
+import { IGetMatchByTimeStageProps } from '../../types/types';
 
 const getMatchByTimeStage = ({
   year,
   month,
   owner,
-}: IGetMatchByTimeStageProps) => {
+}: IGetMatchByTimeStageProps): PipelineStage => {
   const startDate = new Date(`${year}-${month}`);
   const finalDate =
     month === '12'
@@ -22,13 +23,13 @@ const getMatchByTimeStage = ({
   };
 };
 
-const getSortByTimeStage = () => ({
+const getSortByTimeStage = (): PipelineStage => ({
   $sort: {
     time: 1,
   },
 });
 
-const getGroupByDayStage = () => ({
+const getGroupByDayStage = (): PipelineStage => ({
   $group: {
     _id: {
       day: {
@@ -52,7 +53,7 @@ const getGroupByDayStage = () => ({
   },
 });
 
-const getEntriesInfoStage = () => ({
+const getEntriesInfoStage = (): PipelineStage => ({
   $project: {
     month: {
       $month: '$time',
@@ -74,7 +75,7 @@ const getEntriesInfoStage = () => ({
   },
 });
 
-const getRoundNumbersStage = () => ({
+const getRoundNumbersStage = (): PipelineStage => ({
   $project: {
     month: 1,
     entriesQuantity: 1,
@@ -87,7 +88,7 @@ const getRoundNumbersStage = () => ({
   },
 });
 
-const getAddMonthNameStage = () => ({
+const getAddMonthNameStage = (): PipelineStage => ({
   $project: {
     dailyProgress: 1,
     dailyWaterRequirement: 1,
@@ -174,7 +175,7 @@ const getAddMonthNameStage = () => ({
   },
 });
 
-const getAddDailyDataPostfixStage = () => ({
+const getAddDailyDataPostfixStage = (): PipelineStage => ({
   $project: {
     date: {
       $concat: ['$_id.day', ', ', '$month'],
@@ -189,7 +190,7 @@ const getAddDailyDataPostfixStage = () => ({
   },
 });
 
-const getAddObjectIdStage = () => ({
+const getAddObjectIdStage = (): PipelineStage => ({
   $addFields: {
     _id: {
       $toObjectId: {

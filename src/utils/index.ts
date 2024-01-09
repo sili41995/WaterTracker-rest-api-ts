@@ -7,3 +7,5 @@ export { default as getImageFilename } from './getImageFilename';
 export { default as filterFieldsToUpdate } from './filterFieldsToUpdate';
 export { default as getHashPassword } from './getHashPassword';
 export { default as getWaterIntakeTime } from './getWaterIntakeTime';
+export { default as getTodayTime } from './getTodayTime';
+export { default as getDayProgress } from './getDayProgress';

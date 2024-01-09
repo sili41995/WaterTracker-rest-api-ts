@@ -106,3 +106,8 @@ export interface IGetMatchByTimeStageProps {
   month: string;
   owner: string;
 }
+
+export interface IGetDayProgressProps {
+  entries: IHydrationEntry[];
+  dailyWaterRequirement: number;
+}
