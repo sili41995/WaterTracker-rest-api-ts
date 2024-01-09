@@ -1,39 +1,51 @@
-import ElasticEmail from '@elasticemail/elasticemail-client';
-import { ISendEmailProps } from 'types/types';
+import {
+  Configuration,
+  EmailsApi,
+  EmailTransactionalMessageData,
+} from '@elasticemail/elasticemail-client-ts-axios';
+import { ISendEmailProps } from '../types/types';
 const { ELASTIC_EMAIL_EMAIL_FROM, ELASTIC_EMAIL_API_KEY, FRONTEND_BASE_URL } =
   process.env;
 
-const defaultClient = ElasticEmail.ApiClient.instance;
+const config = new Configuration({
+  apiKey: ELASTIC_EMAIL_API_KEY,
+});
 
-const apikey = defaultClient.authentications.apikey;
-apikey.apiKey = ELASTIC_EMAIL_API_KEY;
-
-const api = new ElasticEmail.EmailsApi();
+const emailsApi = new EmailsApi(config);
 
 const sendEmail = ({ userEmail, token }: ISendEmailProps): void => {
-  const email = ElasticEmail.EmailMessageData.constructFromObject({
-    Recipients: [new ElasticEmail.EmailRecipient(userEmail)],
+  const email: EmailTransactionalMessageData = {
+    Recipients: {
+      To: [userEmail],
+    },
     Content: {
       Body: [
-        ElasticEmail.BodyPart.constructFromObject({
+        {
           ContentType: 'HTML',
+          Charset: 'utf-8',
           Content: `<a target='_blank' href='${FRONTEND_BASE_URL}/forgot-password/${token}'>Reset password</a>`,
-        }),
+        },
       ],
-      Subject: 'Password recovery',
       From: ELASTIC_EMAIL_EMAIL_FROM,
+      Subject: 'Password recovery',
     },
-  });
-
-  const callback = function (error: Error) {
-    if (error) {
-      console.error(error);
-    } else {
-      console.log('API called successfully.');
-    }
   };
 
-  api.emailsPost(email, callback);
+  const sendTransactionalEmails = (
+    email: EmailTransactionalMessageData
+  ): void => {
+    emailsApi
+      .emailsTransactionalPost(email)
+      .then((response) => {
+        console.log('API called successfully.');
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  sendTransactionalEmails(email);
 };
 
 export default sendEmail;
