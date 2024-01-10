@@ -24,7 +24,7 @@ const errorMessages: IErrorMessages = {
   amountRequiredErr: 'Missing required amount field',
   timeRequiredErr: 'Missing required time field',
   invalidDateErr:
-    'To get monthly progress, you need to specify the year and month',
+    'To get monthly progress, you need to specify the valid year and month',
 };
 
 export default errorMessages;

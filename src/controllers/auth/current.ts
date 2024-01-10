@@ -9,6 +9,7 @@ const current = async (
 ): Promise<void> => {
   if (req.user) {
     req.user.token = undefined;
+    req.user.restorePasswordToken = undefined;
   }
 
   res.status(200).json(req.user);

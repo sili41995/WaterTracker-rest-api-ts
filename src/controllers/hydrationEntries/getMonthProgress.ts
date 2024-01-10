@@ -1,5 +1,5 @@
 import { Response, NextFunction } from 'express';
-import { ctrlWrapper, httpError } from '../../utils';
+import { ctrlWrapper, getIsValidDate, httpError } from '../../utils';
 import { HydrationEntry } from '../../models/hydrationEntry';
 import {
   getMatchByTimeStage,
@@ -24,7 +24,12 @@ const getMonthProgress = async (
   const { month, year } = req.query;
   const { _id: owner } = req.user as IUser;
 
-  if (!month || !year) {
+  const isValidDate = getIsValidDate({
+    year: Number(year),
+    month: Number(month),
+  });
+
+  if (!isValidDate) {
     throw httpError({
       status: 400,
       message: invalidDateErr,
@@ -34,7 +39,7 @@ const getMonthProgress = async (
   const matchByTimeStage = getMatchByTimeStage({
     month: String(month),
     year: String(year),
-    owner: String(owner),
+    owner,
   });
   const sortByTimeStage = getSortByTimeStage();
   const groupByDayStage = getGroupByDayStage();

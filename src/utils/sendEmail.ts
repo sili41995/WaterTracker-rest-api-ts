@@ -36,9 +36,8 @@ const sendEmail = ({ userEmail, token }: ISendEmailProps): void => {
   ): void => {
     emailsApi
       .emailsTransactionalPost(email)
-      .then((response) => {
+      .then(() => {
         console.log('API called successfully.');
-        console.log(response.data);
       })
       .catch((error) => {
         console.error(error);

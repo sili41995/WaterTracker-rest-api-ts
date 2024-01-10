@@ -15,6 +15,7 @@ import {
   signInSchema,
   updateProfileSchema,
   updatePasswordSchema,
+  restorePasswordSchema,
 } from '../../models/user';
 import { notEmptyBodySchema } from '../../schemas';
 
@@ -41,7 +42,11 @@ router.put(
   updateProfile
 );
 router.patch('/avatars', authenticate, upload.single('avatar'), updateAvatar);
-router.post('/restore-password', restorePassword);
+router.post(
+  '/restore-password',
+  validateBody(restorePasswordSchema),
+  restorePassword
+);
 router.patch(
   '/restore-password/:restorePasswordToken',
   validateBody(updatePasswordSchema),

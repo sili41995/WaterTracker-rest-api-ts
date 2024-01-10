@@ -46,7 +46,6 @@ export interface IHydrationEntryRequest extends IRequest {
   body: IHydrationEntry;
 }
 
-//other
 export interface IErrorMessages {
   [key: string]: string;
 }
@@ -104,10 +103,15 @@ export interface IDecodedToken {
 export interface IGetMatchByTimeStageProps {
   year: string;
   month: string;
-  owner: string;
+  owner: ObjectId;
 }
 
 export interface IGetDayProgressProps {
   entries: IHydrationEntry[];
   dailyWaterRequirement: number;
+}
+
+export interface IGetIsValidDateProps {
+  year: number;
+  month: number;
 }

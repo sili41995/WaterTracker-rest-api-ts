@@ -9,3 +9,4 @@ export { default as getHashPassword } from './getHashPassword';
 export { default as getWaterIntakeTime } from './getWaterIntakeTime';
 export { default as getTodayTime } from './getTodayTime';
 export { default as getDayProgress } from './getDayProgress';
+export { default as getIsValidDate } from './getIsValidDate';

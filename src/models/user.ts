@@ -148,6 +148,10 @@ const updatePasswordSchema = Joi.object({
   passwordRepeat: passwordRepeatSettings.required(),
 });
 
+const restorePasswordSchema = Joi.object({
+  email: emailSettings.required(),
+});
+
 const User = model<IUser>('user', userSchema);
 
 export {
@@ -157,4 +161,5 @@ export {
   dailyWaterRequirementSchema,
   updateProfileSchema,
   updatePasswordSchema,
+  restorePasswordSchema,
 };
