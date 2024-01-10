@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@elasticemail/elasticemail-client-ts-axios": "^4.0.22",
+    "@types/node": "^20.10.8",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.41.1",
     "cors": "^2.8.5",
